@@ -1,0 +1,39 @@
+.show {
+  visibility: visible !important;
+  --webkit-animation: fadeIn 1s;
+  animation: fadeIn 1s;
+}
+
+#popup #popup-form {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+}
+
+#popup-form {
+  visibility: hidden;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@-webkit-keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}

@@ -3,7 +3,31 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <link rel="stylesheet" href="main.css" />
+    <script src="index.js"></script>
+    <title>Library</title>
   </head>
-  <body></body>
+  <body>
+    <h1>Library</h1>
+    <p>
+      Welcome to the library! Here you can find a collection of books and
+      resources.
+    </p>
+    <button class="books">View Books</button>
+    <div id="popup" onclick="popup()">
+      <h2>Add Book</h2>
+      <form id="popup-form">
+        <input type="text" id="title" placeholder="Title" />
+        <input type="text" id="author" placeholder="Author" />
+        <input
+          type="text"
+          id="publicationYear"
+          placeholder="Publication Year"
+        />
+        <input type="text" id="genre" placeholder="Genre" />
+        <textarea id="summary" placeholder="Summary"></textarea>
+        <button type="submit">Add Book</button>
+      </form>
+    </div>
+  </body>
 </html>
