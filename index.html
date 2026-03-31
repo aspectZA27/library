@@ -7,12 +7,21 @@
     <title>Library</title>
   </head>
   <body>
-    <h1>Library</h1>
-    <p>
+    <div class="main">
+      <h1 class="heading">Library</h1>
+      <button id="viewBooks" class="books" onclick="popupBooks()">
+        View Books
+      </button>
+    </div>
+    <p class="description">
       Welcome to the library! Here you can find a collection of books and
       resources.
     </p>
-    <button class="books">View Books</button>
+
+    <div class="booksContainer" id="booksContainer">
+      <h1>Books:</h1>
+      <h2 id="bookList"></h2>
+    </div>
     <div>
       <h2 id="popup" onclick="popup()" class="">Add Book</h2>
       <form id="form">
