@@ -4,7 +4,6 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="main.css" />
-    <script src="index.js"></script>
     <title>Library</title>
   </head>
   <body>
@@ -14,9 +13,9 @@
       resources.
     </p>
     <button class="books">View Books</button>
-    <div id="popup" onclick="popup()">
-      <h2>Add Book</h2>
-      <form id="popup-form">
+    <div>
+      <h2 id="popup" onclick="popup()" class="">Add Book</h2>
+      <form id="form">
         <input type="text" id="title" placeholder="Title" />
         <input type="text" id="author" placeholder="Author" />
         <input
@@ -26,8 +25,9 @@
         />
         <input type="text" id="genre" placeholder="Genre" />
         <textarea id="summary" placeholder="Summary"></textarea>
-        <button type="submit">Add Book</button>
+        <button type="submit" onsubmit="addBook()">Add Book</button>
       </form>
     </div>
   </body>
+  <script src="index.js"></script>
 </html>
