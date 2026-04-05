@@ -15,17 +15,6 @@ function popupBooks() {
   booksContainer.classList.toggle("show");
 }
 
-//Function to view all books
-function viewBooks() {
-  const bookList = document.getElementById("bookList");
-  bookList.innerHTML = "";
-  allBooks.forEach((book) => {
-    const bookItem = document.createElement("p");
-    bookItem.textContent = `Title: ${book.Title} \n Author: ${book.Author}`;
-    bookList.appendChild(bookItem);
-  });
-}
-
 //Function to open the popup form
 function popup() {
   var popup = document.getElementById("form");
@@ -46,9 +35,10 @@ summary.required = true;
 
 //Function to add new books
 function addBook(event) {
+  let IDCount = allBooks.length + 1;
   event.preventDefault();
   const newBook = {
-    id: Math.floor(Math.random() * 1000),
+    id: IDCount,
     Title: title.value,
     Author: author.value,
     PublicationYear: publicationYear.value,
@@ -56,6 +46,7 @@ function addBook(event) {
     Summary: summary.value,
   };
   allBooks.push(newBook);
+  console.log(IDCount);
   console.log(allBooks);
 }
 
@@ -67,3 +58,63 @@ form.addEventListener("submit", () => {
   genre.value = "";
   summary.value = "";
 });
+
+//Function to view all books
+function viewBooks() {
+  const bookList = document.getElementById("bookList");
+
+  bookList.innerHTML = "";
+
+  allBooks.forEach((book) => {
+    //Create new container for each book
+
+    const bookItem = document.createElement("div");
+    bookItem.classList.add("bookItem");
+
+    if (book.id % 2 === 0) {
+      bookItem.style.backgroundColor = "#87888a";
+    }
+
+    const bookTitle = document.createElement("h3");
+    bookTitle.classList.add("title-men");
+    bookTitle.textContent = `Title: ${book.Title}`;
+
+    const bookAuthor = document.createElement("p");
+    bookAuthor.classList.add("author-men");
+    bookAuthor.textContent = `Author: ${book.Author}`;
+
+    const bookDesc = document.createElement("p");
+    bookDesc.classList.add("desc-men");
+    bookDesc.textContent = `Description: ${book.Summary}`;
+
+    const bookRead = document.createElement("button");
+    bookRead.classList.add("bookList-button");
+    bookRead.textContent = "Unread";
+    bookRead.onclick = function () {
+      if (bookRead.innerHTML === "Unread") {
+        bookRead.innerHTML = "Read";
+      } else {
+        bookRead.innerHTML = "Unread";
+      }
+    };
+
+    const bookDelete = document.createElement("button");
+    bookDelete.classList.add("bookList-button");
+    bookDelete.textContent = "Delete";
+    bookDelete.onclick = function () {
+      bookItem.remove();
+      allBooks.splice(
+        allBooks.findIndex((b) => b.id === book.id),
+        1,
+      );
+    };
+
+    bookItem.appendChild(bookTitle);
+    bookItem.appendChild(bookAuthor);
+    bookItem.appendChild(bookDesc);
+    bookItem.appendChild(bookRead);
+    bookItem.appendChild(bookDelete);
+
+    bookList.appendChild(bookItem);
+  });
+}

@@ -20,10 +20,12 @@
 
     <div class="booksContainer" id="booksContainer">
       <h1>Books:</h1>
-      <h2 id="bookList"></h2>
+      <div class="bookList" id="bookList"></div>
     </div>
     <div>
-      <h2 id="popup" onclick="popup()" class="">Add Book</h2>
+      <button class="addBook" id="popup" onclick="popup()" class="">
+        Add Book
+      </button>
       <form id="form">
         <input type="text" id="title" placeholder="Title" />
         <input type="text" id="author" placeholder="Author" />
