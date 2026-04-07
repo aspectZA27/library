@@ -71,10 +71,6 @@ function viewBooks() {
     const bookItem = document.createElement("div");
     bookItem.classList.add("bookItem");
 
-    if (book.id % 2 === 0) {
-      bookItem.style.backgroundColor = "#87888a";
-    }
-
     const bookTitle = document.createElement("h3");
     bookTitle.classList.add("title-men");
     bookTitle.textContent = `Title: ${book.Title}`;
@@ -88,13 +84,17 @@ function viewBooks() {
     bookDesc.textContent = `Description: ${book.Summary}`;
 
     const bookRead = document.createElement("button");
+    let isRead = false;
     bookRead.classList.add("bookList-button");
     bookRead.textContent = "Unread";
     bookRead.onclick = function () {
-      if (bookRead.innerHTML === "Unread") {
-        bookRead.innerHTML = "Read";
-      } else {
+      if (isRead === false) {
         bookRead.innerHTML = "Unread";
+        isRead = true;
+      } else {
+        bookRead.innerHTML = "Read";
+        isRead = false;
+        console.log(isRead);
       }
     };
 

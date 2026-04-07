@@ -8,14 +8,18 @@
   </head>
   <body>
     <div class="main">
-      <h1 class="heading">Library</h1>
+      <button class="addBook" id="popup" onclick="popup()" class="">
+        Add Book
+      </button>
+      <h1 class="heading">L-I-B-R-A-R-Y</h1>
       <button id="viewBooks" class="books" onclick="popupBooks()">
         View Books
       </button>
     </div>
     <p class="description">
-      Welcome to the library! Here you can find a collection of books and
-      resources.
+      Welcome to the library! Here you can save your books and view them
+      whenever you want. You can also add new books to your collection by
+      clicking the "Add Book" button. Happy reading!
     </p>
 
     <div class="booksContainer" id="booksContainer">
@@ -23,9 +27,6 @@
       <div class="bookList" id="bookList"></div>
     </div>
     <div>
-      <button class="addBook" id="popup" onclick="popup()" class="">
-        Add Book
-      </button>
       <form id="form">
         <input type="text" id="title" placeholder="Title" />
         <input type="text" id="author" placeholder="Author" />

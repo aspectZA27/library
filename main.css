@@ -1,15 +1,58 @@
 body {
   margin: 0;
   padding: 0;
-  background-color: #f9f9f9;
+
+  overflow-x: hidden;
+  margin: 20px;
+}
+
+body::before {
+  content: "";
+  display: block;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-image: url("./media/library.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  width: 100%;
+  height: 100%;
+  filter: brightness(0.3) grayscale(1);
+  z-index: -1;
+}
+
+.heading {
+  color: white;
+  position: relative;
+  font-size: 42px !important;
+  font-weight: bold;
+  margin-bottom: 20px;
+  margin: auto;
+  letter-spacing: 30px;
+  filter: drop-shadow(0px 0px 3px white);
+  cursor: default;
+}
+
+.description {
+  position: relative;
+  display: flex;
+  color: white;
+  filter: drop-shadow(0px 0px 2px white);
+  flex-direction: column;
+  align-items: center;
+  margin-right: auto;
+  margin-left: auto;
+  cursor: default;
 }
 
 .addBook {
   padding: 10px 16px;
-  border: none;
+  border: 1px solid black;
   border-radius: 6px;
-  background-color: #3b82f6;
-  color: white;
+  background-color: #ffffff;
+  color: rgb(0, 0, 0);
   font-weight: bold;
   cursor: pointer;
   transition: 0.2s;
@@ -34,10 +77,10 @@ body {
 
 .books {
   padding: 10px 16px;
-  border: none;
+  border: 1px solid black;
   border-radius: 6px;
-  background-color: #3b82f6;
-  color: white;
+  background-color: #ffffff;
+  color: rgb(0, 0, 0);
   font-weight: bold;
   cursor: pointer;
   transition: 0.2s;
@@ -73,15 +116,18 @@ body {
 
 #form {
   visibility: hidden;
-  width: 100%;
+  width: 20%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.6);
-
+  margin: auto;
+  border: solid 1px white;
+  border-radius: 12px;
   display: flex;
   flex-wrap: wrap;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  backdrop-filter: blur(1px);
+  box-shadow: inset 0px 0px 30px rgb(255 255 255);
 
   gap: 10px;
   padding: 20px;
@@ -90,12 +136,15 @@ body {
 /* Inputs & textarea */
 #form input,
 #form textarea {
+  color: white;
+  background-color: #ffffff00;
+  border: 1px solid white;
   width: 260px;
   padding: 10px;
   border-radius: 6px;
-  border: none;
   outline: none;
   font-size: 14px;
+  box-shadow: 0px 0px 30px rgb(255 255 255);
 }
 
 /* Textarea specific */
@@ -107,17 +156,28 @@ body {
 /* Button inside form */
 #form button {
   padding: 10px 16px;
-  border: none;
+  border: 1px solid black;
+
   border-radius: 6px;
-  background-color: #3b82f6;
-  color: white;
+  background-color: #ffffff;
+  color: rgb(0, 0, 0);
   font-weight: bold;
   cursor: pointer;
   transition: 0.2s;
 }
 
 #form button:hover {
-  background-color: #2563eb;
+  background-color: #000000;
+  color: white;
+  border: 1px solid white;
+  box-shadow: 0px 0px 10px rgb(255 255 255);
+}
+
+button:hover {
+  background-color: #000000;
+  color: white;
+  border: 1px solid white;
+  box-shadow: 0px 0px 10px rgb(255 255 255);
 }
 
 #booksContainer {
@@ -129,8 +189,8 @@ body {
   left: 50%;
   transform: translate(-50%, -50%);
 
-  background-color: rgba(255, 255, 255, 0.95);
-  color: #111;
+  color: white;
+  border: solid 1px white;
 
   padding: 20px;
   border-radius: 12px;
@@ -138,7 +198,19 @@ body {
   width: 80%;
   overflow-y: auto;
 
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  box-shadow: inset 0px 0px 30px rgb(255 255 255);
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+
+    backdrop-filter: blur(1px);
+    z-index: -1;
+  }
 }
 
 /* Books list text */
@@ -147,6 +219,9 @@ body {
   text-align: left;
   font-size: 14px;
   line-height: 1.5;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
 }
 
 /* Fade animation */
@@ -169,13 +244,24 @@ body {
 }
 
 .bookItem {
-  background-color: #e5e7eb;
   padding: 10px;
-  width: 100%;
+  width: 90%;
   height: auto;
   margin-bottom: 10px;
-  border: 1px solid #000000;
-  border-radius: 3%;
+  border: 1px solid #ffffff;
+  border-radius: 10px;
+  box-shadow: 0px 0px 30px rgb(255 255 255);
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(121, 121, 121, 0.3);
+    filter: blur(10px) brightness(0.5);
+    z-index: -1;
+  }
 }
 
 .title-men {
@@ -194,10 +280,11 @@ body {
 
 .bookList-button {
   padding: 6px 12px;
-  border: none;
+  margin: 1px;
+  border: 1px solid black;
   border-radius: 6px;
-  background-color: #3b82f6;
-  color: white;
+  background-color: #ffffff;
+  color: rgb(0, 0, 0);
   font-weight: bold;
   cursor: pointer;
   transition: 0.2s;
